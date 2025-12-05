@@ -211,11 +211,16 @@ async function showResult(count, outputDir, host) {
 
     currentImages = data.images;
     gallery.innerHTML = '';
-    data.images.forEach(img => {
+    data.images.forEach((img, index) => {
       const item = document.createElement('div');
       item.className = 'gallery-item';
-      item.innerHTML = `<img src="${img.url}" alt="${img.name}" loading="lazy">`;
-      item.addEventListener('click', () => openLightbox(img.url, img.name));
+      const pageName = img.name.replace('.png', '');
+      item.innerHTML = `
+        <div class="gallery-number">${index + 1}</div>
+        <img src="${img.url}" alt="${img.name}" loading="lazy">
+        <div class="gallery-label">${pageName}</div>
+      `;
+      item.addEventListener('click', () => openLightbox(img.url, img.name, index + 1));
       gallery.appendChild(item);
     });
   } catch {
@@ -240,9 +245,10 @@ function resetUI() {
   urlInput.focus();
 }
 
-function openLightbox(url, name) {
+function openLightbox(url, name, pageNum) {
   lightboxImage.src = url;
-  lightboxName.textContent = name;
+  const pageName = name.replace('.png', '');
+  lightboxName.textContent = `${pageNum}ページ目: ${pageName}`;
   lightbox.hidden = false;
   document.body.style.overflow = 'hidden';
 }

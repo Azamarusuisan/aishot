@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: site-screenshot-crawler
+    runtime: node
+    buildCommand: |
+      npm install
+      npx playwright install chromium
+      npx playwright install-deps chromium
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production

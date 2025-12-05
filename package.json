@@ -5,9 +5,10 @@
   "main": "src/index.js",
   "type": "module",
   "scripts": {
-    "start": "node src/index.js https://example.com",
+    "start": "node src/server.js",
     "server": "node src/server.js",
-    "dev": "node src/server.js"
+    "dev": "node src/server.js",
+    "postinstall": "npx playwright install chromium"
   },
   "keywords": [
     "screenshot",
