@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Screenshot Crawler</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Site Screenshot Crawler</h1>
+      <p class="subtitle">URLを入力してサイト全体のスクリーンショットを取得</p>
+    </header>
+
+    <main>
+      <div class="input-section">
+        <div class="url-input-wrapper">
+          <input
+            type="url"
+            id="urlInput"
+            placeholder="https://example.com"
+            autocomplete="off"
+          >
+          <button id="startBtn" type="button">
+            <span class="btn-text">スクショ開始</span>
+            <span class="btn-loading" hidden>
+              <span class="spinner"></span>
+              処理中...
+            </span>
+          </button>
+        </div>
+        <p class="hint">サイトのURLをペーストしてボタンを押すだけ</p>
+      </div>
+
+      <div class="options-toggle">
+        <button type="button" id="optionsToggle">詳細オプション ▼</button>
+      </div>
+
+      <div class="options-section" id="optionsSection" hidden>
+        <div class="option-row">
+          <label for="maxPages">最大ページ数</label>
+          <input type="number" id="maxPages" value="30" min="1" max="100">
+        </div>
+        <div class="option-row">
+          <label for="maxDepth">最大深さ</label>
+          <input type="number" id="maxDepth" value="2" min="1" max="5">
+        </div>
+        <div class="option-row">
+          <label for="concurrency">同時処理数</label>
+          <input type="number" id="concurrency" value="3" min="1" max="10">
+        </div>
+      </div>
+
+      <div class="progress-section" id="progressSection" hidden>
+        <div class="progress-header">
+          <span id="progressStatus">クロール中...</span>
+          <span id="progressCount">0 / 0</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="log-container">
+          <div id="logOutput"></div>
+        </div>
+      </div>
+
+      <div class="result-section" id="resultSection" hidden>
+        <h2>完了</h2>
+        <p id="resultMessage"></p>
+        <div class="result-actions">
+          <button id="downloadAllBtn" type="button">一括ダウンロード (ZIP)</button>
+          <button id="openFolderBtn" type="button" class="secondary">保存先を開く</button>
+          <button id="resetBtn" type="button" class="secondary">新しく始める</button>
+        </div>
+        <div class="gallery" id="gallery"></div>
+      </div>
+
+      <div class="lightbox" id="lightbox" hidden>
+        <div class="lightbox-backdrop"></div>
+        <div class="lightbox-content">
+          <button class="lightbox-close" id="lightboxClose">&times;</button>
+          <img id="lightboxImage" src="" alt="">
+          <div class="lightbox-actions">
+            <button id="copyBtn" class="action-btn">クリップボードにコピー</button>
+            <button id="downloadBtn" class="action-btn secondary">ダウンロード</button>
+          </div>
+          <p class="lightbox-name" id="lightboxName"></p>
+        </div>
+      </div>
+
+      <div class="toast" id="toast" hidden>コピーしました</div>
+
+      <div class="error-section" id="errorSection" hidden>
+        <h2>エラー</h2>
+        <p id="errorMessage"></p>
+        <button id="retryBtn" type="button">やり直す</button>
+      </div>
+    </main>
+
+    <footer>
+      <p>サーバー負荷や利用規約に配慮してご利用ください</p>
+    </footer>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+{
+  "name": "site-screenshot-crawler",
+  "version": "1.0.0",
+  "description": "URLを指定してサイト内のページをクロールし、フルページスクリーンショットを撮影するCLI/Webツール",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js https://example.com",
+    "server": "node src/server.js",
+    "dev": "node src/server.js"
+  },
+  "keywords": [
+    "screenshot",
+    "crawler",
+    "playwright",
+    "cli"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0",
+    "playwright": "^1.40.0",
+    "yargs": "^17.7.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
