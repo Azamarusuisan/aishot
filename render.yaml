@@ -1,12 +1,9 @@
 services:
   - type: web
-    name: site-screenshot-crawler
-    runtime: node
-    buildCommand: |
-      npm install
-      npx playwright install chromium
-      npx playwright install-deps chromium
-    startCommand: npm start
+    name: aishot
+    runtime: docker
+    dockerfilePath: ./Dockerfile
     envVars:
       - key: NODE_ENV
         value: production
+    healthCheckPath: /
