@@ -1,9 +1,7 @@
 services:
   - type: web
     name: aishot
-    runtime: node
-    buildCommand: npm install && npx playwright install chromium && npx playwright install-deps chromium
-    startCommand: node src/server.js
+    runtime: docker
     plan: free
     autoDeploy: true
     envVars:
