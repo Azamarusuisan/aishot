@@ -3,6 +3,8 @@ services:
     name: aishot
     runtime: docker
     dockerfilePath: ./Dockerfile
+    plan: free
+    autoDeploy: true
     envVars:
       - key: NODE_ENV
         value: production
