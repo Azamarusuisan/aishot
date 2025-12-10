@@ -2,7 +2,7 @@
   "name": "site-screenshot-crawler",
   "version": "1.0.0",
   "description": "URLを指定してサイト内のページをクロールし、フルページスクリーンショットを撮影するCLI/Webツール",
-  "main": "src/index.js",
+  "main": "src/server.js",
   "type": "module",
   "scripts": {
     "start": "node src/server.js",
